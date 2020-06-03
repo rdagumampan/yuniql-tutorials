@@ -20,7 +20,6 @@ steps:
   inputs:
     script: |
       dotnet tool install -g yuniql.cli
-      #yuniql version
 
 - task: CmdLine@2
   inputs:
