@@ -6,14 +6,27 @@ pool:
 
 steps:
 
+- task: CmdLine@2
+  inputs:
+    script: |
+      git clone https://github.com/rdagumampan/yuniql $(Build.SourcesDirectory)\yuniql
+
 - task: UseYUNIQLCLI@0
   inputs:
     version: 'latest'
 
+- task: EraseYuniqlCLI@0
+  inputs:
+    version: 'latest'
+    connectionString: '$(PostgreSqlDemoDatabase)'
+    workspacePath: '$(Build.SourcesDirectory)\yuniql\samples\basic-postgresql-sample'
+    targetPlatform: 'postgresql'
+    additionalArguments: '--debug'
+
 - task: RunYUNIQLCLI@0
   inputs:
     version: 'latest'
-    connectionString: '$(AzSqlDemoDatabase)'
-    workspacePath: '$(Build.SourcesDirectory)\samples\sqlserver-sample'
-    targetPlatform: 'SqlServer'
+    connectionString: '$(PostgreSqlDemoDatabase)'
+    workspacePath: '$(Build.SourcesDirectory)\yuniql\samples\basic-postgresql-sample'
+    targetPlatform: 'PostgreSql'
     additionalArguments: '--debug'
