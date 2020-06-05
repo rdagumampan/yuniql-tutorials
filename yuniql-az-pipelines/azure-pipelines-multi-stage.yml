@@ -9,10 +9,142 @@ stages:
 - stage: deployToDev
   displayName: Deploy to DEV  
   jobs:
-    - deployment: test
+    - deployment: dev
       displayName: Deploy to aws-postgresql
 
       environment: aws-dev
+
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+            - checkout: self
+
+            - task: CmdLine@2
+              displayName: Clone samples repo
+              inputs:
+                script: |
+                  git clone https://github.com/rdagumampan/yuniql $(Build.SourcesDirectory)\yuniql
+
+            - task: UseYUNIQLCLI@0
+              displayName: Install yuniql
+              inputs:
+                version: 'latest'
+
+            - task: EraseYuniqlCLI@0
+              displayName: Erase database with yuniql
+              inputs:
+                version: 'latest'
+                connectionString: '$(AwsPostgreSqlDemoDatabase)'
+                workspacePath: '$(Build.SourcesDirectory)\yuniql\samples\basic-postgresql-sample'
+                targetPlatform: 'postgresql'
+                additionalArguments: '--debug'
+
+            - task: RunYUNIQLCLI@0
+              displayName: Apply migrations with yuniql
+              inputs:
+                version: 'latest'
+                connectionString: '$(AwsPostgreSqlDemoDatabase)'
+                workspacePath: '$(Build.SourcesDirectory)\yuniql\samples\basic-postgresql-sample'
+                targetPlatform: 'PostgreSql'
+                additionalArguments: '--debug'
+
+- stage: deployToTest
+  displayName: Deploy to TEST  
+  jobs:
+    - deployment: test
+      dependsOn: deployToDev
+      displayName: Deploy to aws-postgresql
+
+      environment: aws-test
+
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+            - checkout: self
+
+            - task: CmdLine@2
+              displayName: Clone samples repo
+              inputs:
+                script: |
+                  git clone https://github.com/rdagumampan/yuniql $(Build.SourcesDirectory)\yuniql
+
+            - task: UseYUNIQLCLI@0
+              displayName: Install yuniql
+              inputs:
+                version: 'latest'
+
+            - task: EraseYuniqlCLI@0
+              displayName: Erase database with yuniql
+              inputs:
+                version: 'latest'
+                connectionString: '$(AwsPostgreSqlDemoDatabase)'
+                workspacePath: '$(Build.SourcesDirectory)\yuniql\samples\basic-postgresql-sample'
+                targetPlatform: 'postgresql'
+                additionalArguments: '--debug'
+
+            - task: RunYUNIQLCLI@0
+              displayName: Apply migrations with yuniql
+              inputs:
+                version: 'latest'
+                connectionString: '$(AwsPostgreSqlDemoDatabase)'
+                workspacePath: '$(Build.SourcesDirectory)\yuniql\samples\basic-postgresql-sample'
+                targetPlatform: 'PostgreSql'
+                additionalArguments: '--debug'
+
+- stage: deployToStaging
+  displayName: Deploy to STAGING  
+  jobs:
+    - deployment: staging
+      dependsOn: deployToTest
+      displayName: Deploy to aws-postgresql
+
+      environment: aws-staging
+
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+            - checkout: self
+
+            - task: CmdLine@2
+              displayName: Clone samples repo
+              inputs:
+                script: |
+                  git clone https://github.com/rdagumampan/yuniql $(Build.SourcesDirectory)\yuniql
+
+            - task: UseYUNIQLCLI@0
+              displayName: Install yuniql
+              inputs:
+                version: 'latest'
+
+            - task: EraseYuniqlCLI@0
+              displayName: Erase database with yuniql
+              inputs:
+                version: 'latest'
+                connectionString: '$(AwsPostgreSqlDemoDatabase)'
+                workspacePath: '$(Build.SourcesDirectory)\yuniql\samples\basic-postgresql-sample'
+                targetPlatform: 'postgresql'
+                additionalArguments: '--debug'
+
+            - task: RunYUNIQLCLI@0
+              displayName: Apply migrations with yuniql
+              inputs:
+                version: 'latest'
+                connectionString: '$(AwsPostgreSqlDemoDatabase)'
+                workspacePath: '$(Build.SourcesDirectory)\yuniql\samples\basic-postgresql-sample'
+                targetPlatform: 'PostgreSql'
+                additionalArguments: '--debug'
+
+- stage: deployToProduction
+  displayName: Deploy to PRODUCTION  
+  jobs:
+    - deployment: production
+      dependsOn: deployToStaging
+      displayName: Deploy to aws-postgresql
+
+      environment: aws-production
 
       strategy:
         runOnce:
