@@ -35,7 +35,7 @@ stages:
               displayName: Erase database with yuniql
               inputs:
                 version: 'latest'
-                connectionString: '$(PostgreSqlDemoDatabase)'
+                connectionString: '$(AwsPostgreSqlDemoDatabase)'
                 workspacePath: '$(Build.SourcesDirectory)\yuniql\samples\basic-postgresql-sample'
                 targetPlatform: 'postgresql'
                 additionalArguments: '--debug'
@@ -44,7 +44,7 @@ stages:
               displayName: Apply migrations with yuniql
               inputs:
                 version: 'latest'
-                connectionString: '$(PostgreSqlDemoDatabase)'
+                connectionString: '$(AwsPostgreSqlDemoDatabase)'
                 workspacePath: '$(Build.SourcesDirectory)\yuniql\samples\basic-postgresql-sample'
                 targetPlatform: 'PostgreSql'
                 additionalArguments: '--debug'
