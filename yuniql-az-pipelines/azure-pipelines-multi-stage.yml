@@ -53,7 +53,7 @@ stages:
   displayName: Deploy to TEST  
   jobs:
     - deployment: test
-      dependsOn: deployToDev
+      # dependsOn: deployToDev
       displayName: Deploy to aws-postgresql
 
       environment: aws-test
@@ -97,7 +97,7 @@ stages:
   displayName: Deploy to STAGING  
   jobs:
     - deployment: staging
-      dependsOn: deployToTest
+      # dependsOn: deployToTest
       displayName: Deploy to aws-postgresql
 
       environment: aws-staging
@@ -141,7 +141,7 @@ stages:
   displayName: Deploy to PRODUCTION  
   jobs:
     - deployment: production
-      dependsOn: deployToStaging
+      # dependsOn: deployToStaging
       displayName: Deploy to aws-postgresql
 
       environment: aws-production
