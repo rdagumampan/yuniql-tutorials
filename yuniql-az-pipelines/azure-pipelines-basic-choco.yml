@@ -12,17 +12,11 @@ steps:
     script: |
       git clone https://github.com/rdagumampan/yuniql $(Build.SourcesDirectory)\yuniql
 
-- task: UseDotNet@2
-  displayName: dotnet sdk install v3.1.201
-  inputs:
-    packageType: 'sdk'
-    version: '3.1.201'
-
 - task: CmdLine@2
-  displayName: dotnet tool install -g yuniql.cli
+  displayName: choco install yuniql
   inputs:
     script: |
-      dotnet tool install -g yuniql.cli
+      choco install yuniql
 
 - task: CmdLine@2
   displayName: yuniql erase
