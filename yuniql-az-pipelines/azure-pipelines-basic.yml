@@ -7,15 +7,18 @@ pool:
 steps:
 
 - task: CmdLine@2
+  displayName: clone postgre samples repo
   inputs:
     script: |
       git clone https://github.com/rdagumampan/yuniql $(Build.SourcesDirectory)\yuniql
 
 - task: UseYUNIQLCLI@0
+  displayName: yuniql install
   inputs:
     version: 'latest'
 
 - task: EraseYuniqlCLI@0
+  displayName: yuniql erase
   inputs:
     version: 'latest'
     connectionString: '$(PostgreSqlDemoDatabase)'
@@ -24,6 +27,7 @@ steps:
     additionalArguments: '--debug'
 
 - task: RunYUNIQLCLI@0
+  displayName: yuniql run
   inputs:
     version: 'latest'
     connectionString: '$(PostgreSqlDemoDatabase)'

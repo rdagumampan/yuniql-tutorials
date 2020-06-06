@@ -7,6 +7,7 @@ pool:
 steps:
 
 - task: CmdLine@2
+  displayName: clone postgre samples repo
   inputs:
     script: |
       git clone https://github.com/rdagumampan/yuniql $(Build.SourcesDirectory)\yuniql
@@ -17,16 +18,19 @@ steps:
     version: '3.1.201'
 
 - task: CmdLine@2
+  displayName: dotnet tool install -g yuniql.cli
   inputs:
     script: |
       dotnet tool install -g yuniql.cli
 
 - task: CmdLine@2
+  displayName: yuniql erase
   inputs:
     script: |
       yuniql erase -c "$(PostgreSqlDemoDatabase)" -p "$(Build.SourcesDirectory)\yuniql\samples\basic-postgresql-sample" --platform postgresql --debug
 
 - task: CmdLine@2
+  displayName: yuniql run
   inputs:
     script: |
       yuniql run -c "$(PostgreSqlDemoDatabase)" -p "$(Build.SourcesDirectory)\yuniql\samples\basic-postgresql-sample" --platform postgresql --debug
