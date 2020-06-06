@@ -27,12 +27,12 @@ stages:
                   git clone https://github.com/rdagumampan/yuniql $(Build.SourcesDirectory)\yuniql
 
             - task: UseYUNIQLCLI@0
-              displayName: Install yuniql
+              displayName: yuniql install
               inputs:
                 version: 'latest'
 
             - task: EraseYuniqlCLI@0
-              displayName: Erase database with yuniql
+              displayName: yuniql erase
               inputs:
                 version: 'latest'
                 connectionString: '$(AwsPostgreSqlDemoDatabase)'
@@ -41,7 +41,7 @@ stages:
                 additionalArguments: '--debug'
 
             - task: RunYUNIQLCLI@0
-              displayName: Apply migrations with yuniql
+              displayName: yuniql run
               inputs:
                 version: 'latest'
                 connectionString: '$(AwsPostgreSqlDemoDatabase)'
@@ -71,12 +71,12 @@ stages:
                   git clone https://github.com/rdagumampan/yuniql $(Build.SourcesDirectory)\yuniql
 
             - task: UseYUNIQLCLI@0
-              displayName: Install yuniql
+              displayName: yuniql install
               inputs:
                 version: 'latest'
 
             - task: EraseYuniqlCLI@0
-              displayName: Erase database with yuniql
+              displayName: yuniql erase
               inputs:
                 version: 'latest'
                 connectionString: '$(AwsPostgreSqlDemoDatabase)'
@@ -85,7 +85,7 @@ stages:
                 additionalArguments: '--debug'
 
             - task: RunYUNIQLCLI@0
-              displayName: Apply migrations with yuniql
+              displayName: yuniql run
               inputs:
                 version: 'latest'
                 connectionString: '$(AwsPostgreSqlDemoDatabase)'
@@ -115,12 +115,12 @@ stages:
                   git clone https://github.com/rdagumampan/yuniql $(Build.SourcesDirectory)\yuniql
 
             - task: UseYUNIQLCLI@0
-              displayName: Install yuniql
+              displayName: yuniql install
               inputs:
                 version: 'latest'
 
             - task: EraseYuniqlCLI@0
-              displayName: Erase database with yuniql
+              displayName: yuniql erase
               inputs:
                 version: 'latest'
                 connectionString: '$(AwsPostgreSqlDemoDatabase)'
@@ -129,7 +129,7 @@ stages:
                 additionalArguments: '--debug'
 
             - task: RunYUNIQLCLI@0
-              displayName: Apply migrations with yuniql
+              displayName: yuniql run
               inputs:
                 version: 'latest'
                 connectionString: '$(AwsPostgreSqlDemoDatabase)'
@@ -159,12 +159,12 @@ stages:
                   git clone https://github.com/rdagumampan/yuniql $(Build.SourcesDirectory)\yuniql
 
             - task: UseYUNIQLCLI@0
-              displayName: Install yuniql
+              displayName: yuniql install
               inputs:
                 version: 'latest'
 
             - task: EraseYuniqlCLI@0
-              displayName: Erase database with yuniql
+              displayName: yuniql erase
               inputs:
                 version: 'latest'
                 connectionString: '$(AwsPostgreSqlDemoDatabase)'
@@ -173,7 +173,7 @@ stages:
                 additionalArguments: '--debug'
 
             - task: RunYUNIQLCLI@0
-              displayName: Apply migrations with yuniql
+              displayName: yuniql run
               inputs:
                 version: 'latest'
                 connectionString: '$(AwsPostgreSqlDemoDatabase)'
