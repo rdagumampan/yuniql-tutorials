@@ -7,7 +7,7 @@ pool:
 steps:
 
 - task: CmdLine@2
-  displayName: clone postgre samples repo
+  displayName: clone postgresql samples repo
   inputs:
     script: |
       git clone https://github.com/rdagumampan/yuniql $(Build.SourcesDirectory)\yuniql
