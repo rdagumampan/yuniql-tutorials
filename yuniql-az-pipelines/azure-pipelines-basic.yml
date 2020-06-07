@@ -21,7 +21,7 @@ steps:
   displayName: yuniql erase
   inputs:
     version: 'latest'
-    connectionString: '$(PostgreSqlDemoDatabase)'
+    connectionString: '$(AwsPostgreSqlDemoDatabase)'
     workspacePath: '$(Build.SourcesDirectory)\yuniql\samples\basic-postgresql-sample'
     targetPlatform: 'postgresql'
     additionalArguments: '--debug'
@@ -30,7 +30,7 @@ steps:
   displayName: yuniql run
   inputs:
     version: 'latest'
-    connectionString: '$(PostgreSqlDemoDatabase)'
+    connectionString: '$(AwsPostgreSqlDemoDatabase)'
     workspacePath: '$(Build.SourcesDirectory)\yuniql\samples\basic-postgresql-sample'
     targetPlatform: 'PostgreSql'
     additionalArguments: '--debug'
