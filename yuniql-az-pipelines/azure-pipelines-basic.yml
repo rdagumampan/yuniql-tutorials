@@ -24,7 +24,7 @@ steps:
     connectionString: '$(AwsPostgreSqlDemoDatabase)'
     workspacePath: '$(Build.SourcesDirectory)\yuniql\samples\basic-postgresql-sample'
     targetPlatform: 'postgresql'
-    additionalArguments: '--debug'
+    additionalArguments: '--force --debug'
 
 - task: RunYUNIQLCLI@0
   displayName: yuniql run
