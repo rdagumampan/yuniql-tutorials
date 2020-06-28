@@ -26,12 +26,12 @@ stages:
                 script: |
                   git clone https://github.com/rdagumampan/yuniql $(Build.SourcesDirectory)\yuniql
 
-            - task: UseYUNIQLCLI@0
+            - task: UseYUNIQLCLI@1
               displayName: yuniql install
               inputs:
                 version: 'latest'
 
-            - task: EraseYuniqlCLI@0
+            - task: EraseYuniqlCLI@1
               displayName: yuniql erase
               inputs:
                 version: 'latest'
@@ -40,7 +40,7 @@ stages:
                 targetPlatform: 'postgresql'
                 additionalArguments: '--force --debug'
 
-            - task: RunYUNIQLCLI@0
+            - task: RunYUNIQLCLI@1
               displayName: yuniql run
               inputs:
                 version: 'latest'
@@ -70,12 +70,12 @@ stages:
                 script: |
                   git clone https://github.com/rdagumampan/yuniql $(Build.SourcesDirectory)\yuniql
 
-            - task: UseYUNIQLCLI@0
+            - task: UseYUNIQLCLI@1
               displayName: yuniql install
               inputs:
                 version: 'latest'
 
-            - task: EraseYuniqlCLI@0
+            - task: EraseYuniqlCLI@1
               displayName: yuniql erase
               inputs:
                 version: 'latest'
@@ -84,7 +84,7 @@ stages:
                 targetPlatform: 'postgresql'
                 additionalArguments: '--force --debug'
 
-            - task: RunYUNIQLCLI@0
+            - task: RunYUNIQLCLI@1
               displayName: yuniql run
               inputs:
                 version: 'latest'
@@ -114,12 +114,12 @@ stages:
                 script: |
                   git clone https://github.com/rdagumampan/yuniql $(Build.SourcesDirectory)\yuniql
 
-            - task: UseYUNIQLCLI@0
+            - task: UseYUNIQLCLI@1
               displayName: yuniql install
               inputs:
                 version: 'latest'
 
-            - task: EraseYuniqlCLI@0
+            - task: EraseYuniqlCLI@1
               displayName: yuniql erase
               inputs:
                 version: 'latest'
@@ -128,7 +128,7 @@ stages:
                 targetPlatform: 'postgresql'
                 additionalArguments: '--debug'
 
-            - task: RunYUNIQLCLI@0
+            - task: RunYUNIQLCLI@1
               displayName: yuniql run
               inputs:
                 version: 'latest'
@@ -158,12 +158,12 @@ stages:
                 script: |
                   git clone https://github.com/rdagumampan/yuniql $(Build.SourcesDirectory)\yuniql
 
-            - task: UseYUNIQLCLI@0
+            - task: UseYUNIQLCLI@1
               displayName: yuniql install
               inputs:
                 version: 'latest'
 
-            - task: EraseYuniqlCLI@0
+            - task: EraseYuniqlCLI@1
               displayName: yuniql erase
               inputs:
                 version: 'latest'
@@ -172,7 +172,7 @@ stages:
                 targetPlatform: 'postgresql'
                 additionalArguments: '--debug'
 
-            - task: RunYUNIQLCLI@0
+            - task: RunYUNIQLCLI@1
               displayName: yuniql run
               inputs:
                 version: 'latest'
